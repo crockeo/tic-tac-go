@@ -21,15 +21,15 @@ func TestFindWinner(t *testing.T) {
 		[]Player{Nil, Nil, X},
 	})
 
-	if FindWinner(board1) != X {
+	if FindWinner(board1) != X || !IsOver(board1) {
 		t.Error("FindWinner on board1 should be X.")
 	}
 
-	if FindWinner(board2) != O {
+	if FindWinner(board2) != O || !IsOver(board2) {
 		t.Error("FindWinner on board2 should be O.")
 	}
 
-	if FindWinner(board3) != X {
+	if FindWinner(board3) != X || !IsOver(board3) {
 		t.Error("FindWinner on board3 should be X.")
 	}
 }

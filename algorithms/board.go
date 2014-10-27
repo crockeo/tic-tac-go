@@ -24,6 +24,13 @@ func WinScore(player Player) int {
 // A type to represent a board.
 type Board [][]Player
 
+// An empty board.
+var EmptyBoard Board = [][]Player{
+	[]Player{Nil, Nil, Nil},
+	[]Player{Nil, Nil, Nil},
+	[]Player{Nil, Nil, Nil},
+}
+
 // Getting the other player.
 func Other(player Player) Player {
 	if player == X {
@@ -64,6 +71,19 @@ func FindValidMoves(board Board) []Position {
 	}
 
 	return poss
+}
+
+// Finding whose turn it is.
+func FindTurn(board Board) Player {
+	moves := FindValidMoves(board)
+
+	if len(moves) == 0 {
+		return Nil
+	} else if len(moves)%2 == 0 {
+		return X
+	} else {
+		return O
+	}
 }
 
 // Finding a winner -- if there is one.
@@ -122,6 +142,11 @@ func FindWinner(board Board) Player {
 	}
 
 	return Nil
+}
+
+// Determining the value of a board.
+func BoardValue(board Board) int {
+	return int(FindWinner(board))
 }
 
 // Checking if the game is over.
