@@ -27,7 +27,8 @@ func registerRoutes() {
 	goji.Get("/", controllers.GetHome)
 	goji.NotFound(controllers.NotFound)
 
-	board := &algorithms.EmptyBoard
+	board := new(algorithms.Board)
+	*board = algorithms.EmptyBoard
 
 	// Registering the API.
 	goji.Get("/api/pull/state", api.PullState(board))
