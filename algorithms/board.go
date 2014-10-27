@@ -80,9 +80,9 @@ func FindTurn(board Board) Player {
 	if len(moves) == 0 {
 		return Nil
 	} else if len(moves)%2 == 0 {
-		return X
-	} else {
 		return O
+	} else {
+		return X
 	}
 }
 
