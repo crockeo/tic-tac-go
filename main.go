@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/crockeo/berries"
+	"github.com/crockeo/tic-tac-go/algorithms"
 	"github.com/crockeo/tic-tac-go/api"
 	"github.com/crockeo/tic-tac-go/controllers"
 	"github.com/zenazn/goji"
@@ -26,10 +27,12 @@ func registerRoutes() {
 	goji.Get("/", controllers.GetHome)
 	goji.NotFound(controllers.NotFound)
 
+	board := &algorithms.EmptyBoard
+
 	// Registering the API.
-	goji.Get("/api/pull/state", api.PullState)
-	goji.Post("/api/push/reset", api.PushReset)
-	goji.Post("/api/push/move", api.PushMove)
+	goji.Get("/api/pull/state", api.PullState(board))
+	goji.Post("/api/push/reset", api.PushReset(board))
+	goji.Post("/api/push/move", api.PushMove(board))
 }
 
 // The entrypoint to the program.
