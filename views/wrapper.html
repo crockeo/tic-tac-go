@@ -1,1 +1,29 @@
-{{ template "contents" . }}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<!-- Page Config !-->
+		<title>TicTacToe AI</title>
+
+		<!-- External Style Sheets !-->
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/css/style.css">
+
+		<!-- External Scripts !-->
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/{{.Name}}.js"></script>
+
+	</head>
+
+	<body>
+		<div class="container">
+			<h1 class="text-center">Tic Tac Toe vs. Super Smart AI</h1>
+
+			<hr>
+
+			{{ template "contents" . }}
+		</div>
+	</body>
+</html>

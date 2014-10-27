@@ -17,6 +17,7 @@ func removeMiddleware() {
 // Adding my own middleware.
 func addMiddleware() {
 	goji.Use(berries.StaticMiddleware("static/"))
+	goji.Use(berries.RecoveryMiddleware(controllers.Recoverer))
 }
 
 // Registering the routes.
