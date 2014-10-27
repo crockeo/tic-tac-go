@@ -8,7 +8,7 @@ import (
 )
 
 // A type to more easily be used in the PullState function.
-type pullResponse struct {
+type pullStateResponse struct {
 	Over   bool  `json:"over"`
 	Winner int   `json:"winner"`
 	Turn   int   `json:"turn"`
@@ -35,7 +35,7 @@ func PullState(board *algorithms.Board) func(web.C, http.ResponseWriter, *http.R
 		enc := json.NewEncoder(w)
 
 		w.Header().Set("Content-Type", "application/json;charset=UTF-8")
-		err := enc.Encode(pullResponse{
+		err := enc.Encode(pullStateResponse{
 			algorithms.IsOver(*board),
 			int(algorithms.FindWinner(*board)),
 			int(algorithms.FindTurn(*board)),
